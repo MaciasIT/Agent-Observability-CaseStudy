@@ -1,0 +1,3 @@
+# Tarea 1: Agente de Generación de Imágenes con Aprobación de Coste
+
+**Objetivo:** Construir un agente que genera imágenes y pide confirmación para solicitudes masivas (>1 imagen).

@@ -1,0 +1,6 @@
+---
+### Paso 3: Creación de la Lógica del Agente
+
+¡Nuestra herramienta funciona! Ahora vamos a construir el "cerebro" del agente.
+
+El agente `agente_generador_de_imagenes` no generará las imágenes directamente. En su lugar, orquestará el trabajo: recibirá la solicitud del usuario y decidirá si debe usar la herramienta `generar_una_imagen` inmediatamente o si debe pedir permiso primero.

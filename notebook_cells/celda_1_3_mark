@@ -1,0 +1,12 @@
+---
+### Paso 1: Investigación y Selección de la Herramienta
+
+Hemos investigado varias APIs de generación de imágenes. Nuestro objetivo era encontrar una que fuera:
+
+- **Accesible:** Preferiblemente con una capa gratuita generosa.
+- **Fácil de usar:** Con una buena biblioteca cliente en Python.
+- **Bien documentada:** Para poder consultar y aprender rápidamente.
+
+**Decisión:** Para este ejercicio, usaremos la API de **Stability AI**. Su API es directa, tienen buena documentación y suelen ofrecer créditos iniciales que son más que suficientes para nuestra tarea.
+
+Para usarla, necesitarás una API Key. Puedes obtenerla gratis registrándote en [DreamStudio](https://platform.stability.ai/).

@@ -1,0 +1,35 @@
+def agente_generador_de_imagenes(prompt: str, num_imagenes: int):
+    """
+    Orquesta la generación de imágenes con una capa de aprobación.
+    - Si num_imagenes es 1, genera la imagen directamente.
+    - Si num_imagenes > 1, pide confirmación al usuario.
+    """
+    print(f"\n🧠 Agente ha recibido una solicitud: '{prompt}' (x{num_imagenes})")
+
+    # Lógica de decisión del agente
+    if num_imagenes <= 0:
+        print("🤔 Número de imágenes no válido. Debe ser 1 o más.")
+        return
+
+    if num_imagenes == 1:
+        print("✅ Solicitud de una sola imagen. Aprobación automática.")
+        generar_una_imagen(prompt, nombre_archivo=f"imagen_unica.png")
+    else: # Solicitud masiva
+        print(f"⚠️  SOLICITUD MASIVA DETECTADA ({num_imagenes} imágenes).")
+        
+        # Pedir aprobación humana
+        try:
+            respuesta = input(f"¿Estás seguro de que quieres generar {num_imagenes} imágenes? (s/n): ").lower()
+        except (IOError, EOFError):
+            print("\nNo se pudo obtener respuesta. Cancelando solicitud.")
+            respuesta = 'n'
+
+        if respuesta == 's' or respuesta == 'si':
+            print(f"👍 Aprobado. Procediendo a generar {num_imagenes} imágenes.")
+            for i in range(num_imagenes):
+                # Generamos un prompt ligeramente diferente para cada imagen para variedad
+                prompt_variado = f"{prompt}, imagen {i+1} de {num_imagenes}"
+                nombre_archivo = f"imagen_masiva_{i+1}.png"
+                generar_una_imagen(prompt_variado, nombre_archivo)
+        else:
+            print("❌ Solicitud cancelada por el usuario.")

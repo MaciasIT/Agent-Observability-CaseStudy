@@ -1,0 +1,29 @@
+import os
+import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation
+from stability_sdk import client
+from getpass import getpass
+from PIL import Image
+import io
+
+# --- Configuración de la API Key ---
+# Para que el cuaderno funcione, necesitas una API key de Stability AI.
+# 1. Ve a https://platform.stability.ai/ y regístrate.
+# 2. Copia tu API Key.
+# 3. Pégala cuando el siguiente campo te lo pida.
+
+api_key = os.environ.get('STABILITY_KEY')
+if not api_key:
+    try:
+        api_key = getpass('Introduce tu API Key de Stability AI: ')
+    except (IOError, EOFError):
+        print('No se pudo leer la API key.')
+
+# --- Creación del cliente de la API ---
+if api_key:
+    stability_api = client.StabilityInference(
+        key=api_key,
+        verbose=True, 
+        engine="stable-diffusion-xl-1024-v1-0",
+    )
+else:
+    print("API Key no configurada. No se podrán generar imágenes.")

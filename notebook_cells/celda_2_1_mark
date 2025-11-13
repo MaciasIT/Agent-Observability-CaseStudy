@@ -1,0 +1,4 @@
+---
+### Paso 2: Construcción de la Herramienta Base (Función de Generación)
+
+Ahora crearemos la función `generar_una_imagen`. Esta será nuestra "herramienta". Su única responsabilidad es tomar un `prompt` (el texto descriptivo), llamar a la API de Stability AI y guardar la imagen resultante en un archivo.

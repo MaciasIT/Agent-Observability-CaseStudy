@@ -1,0 +1,14 @@
+---
+### Paso 5: Puente hacia el Framework ADK (Conceptos)
+
+¡Felicidades! Has construido un agente simple pero funcional.
+
+**¿Cómo se vería esto en el Google ADK?**
+
+1.  **`generar_una_imagen` sería un `Tool`:** Envolveríamos nuestra función en la anotación `@tool` del ADK. El framework se encargaría de exponer la descripción de la función (`docstring`) al modelo de lenguaje (LLM) para que sepa para qué sirve.
+
+2.  **`agente_generador_de_imagenes` sería el `Agent`:** La lógica de decisión que escribimos (el `if/else` y el `input`) viviría dentro del bucle principal de un agente ADK. En lugar de un `input()` simple, el ADK proporciona mecanismos más robustos para la "intervención humana", permitiendo que el agente se detenga, espere una aprobación externa (por ejemplo, desde una interfaz de usuario) y luego reanude su ejecución.
+
+3.  **El LLM podría tomar más decisiones:** En un agente más avanzado, podríamos darle al LLM la capacidad de decidir *si* necesita aprobación. Podríamos instruirle: "Si la solicitud parece costosa o inusual, pide confirmación". El ADK facilita esta interacción entre el LLM, las herramientas y el usuario.
+
+Este ejercicio es la base. Has separado la **herramienta** (la acción) del **agente** (la lógica de orquestación), que es el principio fundamental detrás de los frameworks de agentes modernos como el ADK.

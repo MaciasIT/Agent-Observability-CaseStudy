@@ -1,0 +1,11 @@
+# --- Paso 4: Ensamblaje y Pruebas en el Cuaderno ---
+print("---" Probando el agente con una solicitud ÚNICA ---")
+agente_generador_de_imagenes("Un robot leyendo un libro en una biblioteca futurista", 1)
+
+print("\n\n---" Probando el agente con una solicitud MASIVA (prueba de cancelación) ---")
+# Para esta prueba, responde 'n' o 'no' cuando te pregunte.
+agente_generador_de_imagenes("Un paisaje de Marte con dos lunas", 3)
+
+print("\n\n---" Probando el agente con una solicitud MASIVA (prueba de aprobación) ---")
+# Para esta prueba, responde 's' o 'si' cuando te pregunte.
+agente_generador_de_imagenes("Un bosque encantado por la noche, con luces mágicas", 2)

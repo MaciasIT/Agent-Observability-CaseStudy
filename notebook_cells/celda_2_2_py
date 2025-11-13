@@ -1,0 +1,2 @@
+# Primero, instalamos las librerías necesarias.
+!pip install stability-sdk

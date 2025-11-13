@@ -1,0 +1,43 @@
+def generar_una_imagen(prompt: str, nombre_archivo: str = "output.png"):
+    """
+    Llama a la API de Stability AI para generar una imagen a partir de un prompt.
+    Guarda la imagen generada en un archivo local.
+    """
+    if 'stability_api' not in globals():
+        print("El cliente de la API no está inicializado. Verifica tu API Key.")
+        return None
+
+    print(f"\n🤖 Generando imagen para el prompt: '{prompt}'...")
+    
+    # Llamada a la API
+    answers = stability_api.generate(
+        prompt=prompt,
+        seed=42, # Semilla para reproducibilidad
+        steps=40,
+        cfg_scale=8.0,
+        width=1024,
+        height=1024,
+        samples=1,
+        sampler=generation.SAMPLER_K_DPMPP_2M
+    )
+    
+    # Procesamiento de la respuesta
+    for resp in answers:
+        for artifact in resp.artifacts:
+            if artifact.finish_reason == generation.FILTER:
+                print("ADVERTENCIA: La solicitud fue filtrada por políticas de seguridad.")
+            if artifact.type == generation.ARTIFACT_IMAGE:
+                img = Image.open(io.BytesIO(artifact.binary))
+                img.save(nombre_archivo)
+                print(f"✅ Imagen guardada como '{nombre_archivo}'")
+                # Devuelve la ruta del archivo para confirmar el éxito
+                return nombre_archivo
+    
+    # Si no se generó ninguna imagen
+    return None
+
+# --- Prueba rápida de la herramienta ---
+# Si la API key fue introducida, hacemos una prueba para verificar que todo funciona.
+if 'api_key' in locals() and api_key:
+    print("--- Realizando prueba de la herramienta 'generar_una_imagen' ---")
+    generar_una_imagen("Un gato con un sombrero de mago, estilo acuarela")
